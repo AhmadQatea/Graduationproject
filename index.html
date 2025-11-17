@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشروع MyJourney - منصة سياحية متكاملة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --text: #333;
+            --text-light: #777;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        /* Description Section */
+        .description {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+        
+        /* Comparison Table */
+        .comparison {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: right;
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .highlight {
+            background-color: rgba(52, 152, 219, 0.1) !important;
+            font-weight: 600;
+        }
+        
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        /* Technologies Section */
+        .tech-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .tech-category {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .tech-category h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        .tech-list {
+            list-style-type: none;
+        }
+        
+        .tech-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        
+        .tech-list li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Defense Section */
+        .defense-points {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .defense-point {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .defense-point:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .defense-point h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .defense-point h3::before {
+            content: '✓';
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background-color: var(--success);
+            color: white;
+            border-radius: 50%;
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .conclusion {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .features-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .tech-categories {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 1rem;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+                width: 100%;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 0.8rem 0;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                left: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tech-categories {
+                grid-template-columns: 1fr;
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+            
+            th, td {
+                padding: 0.7rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+            
+            section {
+                padding: 2.5rem 0;
+            }
+            
+            .description {
+                padding: 1.5rem;
+            }
+            
+            .defense-points {
+                padding: 1.5rem;
+            }
+            
+            table {
+                font-size: 0.8rem;
+            }
+            
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: var(--secondary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+        
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            background-color: var(--primary);
+        }
+        
+        /* Badge for new features */
+        .badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">MyJourney</div>
+            <p class="tagline">منصة سياحية متكاملة لاستكشاف وحجز الرحلات في سوريا</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo" style="color: var(--primary); font-size: 1.5rem;">MyJourney</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#description">الوصف</a></li>
+                <li><a href="#comparison">المقارنة</a></li>
+                <li><a href="#importance">الأهمية</a></li>
+                <li><a href="#technologies">التقنيات</a></li>
+                <li><a href="#defense">الدفاع</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Description Section -->
+    <section id="description">
+        <div class="container">
+            <div class="section-title">
+                <h2>وصف المشروع</h2>
+            </div>
+            <div class="description fade-in">
+                <p>"MyJourney" هو منصة سياحية إلكترونية تهدف إلى تمكين السياح والمستكشفين من اكتشاف المناطق السياحية في سوريا وحجز رحلات مخصصة بسهولة وأمان.</p>
+                <p>يتيح التطبيق للمستخدمين:</p>
+                <ul style="margin-right: 2rem; margin-top: 1rem;">
+                    <li>استعراض المحافظات السورية الـ 14 والأماكن السياحية التابعة لها</li>
+                    <li>الاطلاع على العروض والرحلات المتاحة مع تفاصيل دقيقة (الوقت، السعر، عدد الأشخاص، الصور، الوصف)</li>
+                    <li>حجز الرحلات بعد التحقق من الهوية والبريد الإلكتروني</li>
+                    <li>كتابة وتقييم التجارب السياحية عبر مدونة تفاعلية</li>
+                    <li>إدارة كاملة للحسابات والحجوزات والمقالات من قبل المستخدمين والمسؤولين</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section id="comparison" style="background-color: #f5f7fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>المقارنة مع الإصدار السابق</h2>
+            </div>
+            <div class="comparison fade-in">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>النقطة</th>
+                            <th>الإصدار السابق (دليل سياحي)</th>
+                            <th>الإصدار الجديد (MyJourney)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>النطاق</strong></td>
+                            <td>دليل محلي للمتاجر والمطاعم</td>
+                            <td class="highlight">منصة سياحية شاملة تشمل رحلات بين المحافظات</td>
+                        </tr>
+                        <tr>
+                            <td><strong>آلية الحجز</strong></td>
+                            <td>غير موجودة</td>
+                            <td class="highlight">نظام حجز كامل مع تحقق من الهوية والبريد</td>
+                        </tr>
+                        <tr>
+                            <td><strong>الصلاحيات والأدوار</strong></td>
+                            <td>مستخدم عادي ومدير فقط</td>
+                            <td class="highlight">5 أدوار (مستخدم عادي، مسؤول حجز، مسؤول مستخدمين، مسؤول محتوى، Big Boss)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>التفاعل</strong></td>
+                            <td>تقييمات وتعليقات فقط</td>
+                            <td class="highlight">مدونة سياحية، مقالات، مشاركة تجارب</td>
+                        </tr>
+                        <tr>
+                            <td><strong>الأمان</strong></td>
+                            <td>تسجيل دخول عادي</td>
+                            <td class="highlight">تحقق متعدد العوامل (2FA، Fortify، MultiGuard)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>الإشعارات</strong></td>
+                            <td>محدودة</td>
+                            <td class="highlight">نظام إشعارات متكامل (بريد، رسائل)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>إدارة المحتوى</strong></td>
+                            <td>ثابتة</td>
+                            <td class="highlight">ديناميكية مع إمكانية الفلترة والبحث المتقدم</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Importance Section -->
+    <section id="importance">
+        <div class="container">
+            <div class="section-title">
+                <h2>أهمية المشروع</h2>
+            </div>
+            <div class="features-grid fade-in">
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>سد فجوة سياحية حقيقية</h3>
+                    <p>لا توجد منصة سياحية سورية متكاملة تجمع بين الاستكشاف والحجز والتقييم. ندعم السياحة الداخلية وإبراز التراث السوري.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>أمان وموثوقية عالية</h3>
+                    <p>استخدام تحقق الهوية والبريد الإلكتروني يضمن مصداقية المستخدمين. نظام الصلاحيات يمنع التلاعب ويضمن شفافية العمليات.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>تطوير لتجربة سابقة ناجحة</h3>
+                    <p>البناء على مشروع "دليل سياحي" السابق وتوسيعه من دليل محلي إلى منصة سياحية وطنية.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>قابلية التوسع مستقبلاً</h3>
+                    <p>يمكن إضافة الدفع الإلكتروني لاحقًا، دعم لغات متعددة، وإمكانية دمج الذكاء الاصطناعي لتقديم توصيات مخصصة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section id="technologies" style="background-color: #f5f7fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>الأدوات والتقنيات المستخدمة</h2>
+            </div>
+            <div class="tech-categories fade-in">
+                <div class="tech-category">
+                    <h3>Backend & Framework</h3>
+                    <ul class="tech-list">
+                        <li>PHP (Laravel) – الإطار الرئيسي</li>
+                        <li>Laravel Blade – لواجهات المستخدم</li>
+                        <li>Laravel Livewire – للمكونات التفاعلية</li>
+                        <li>MySQL – قاعدة البيانات</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h3>Frontend & UI</h3>
+                    <ul class="tech-list">
+                        <li>HTML5, CSS3, JavaScript</li>
+                        <li>Bootstrap – للإستجابة والتنسيق</li>
+                        <li>Alpine.js – للتفاعلات البسيطة</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h3>الخرائط والموقع</h3>
+                    <ul class="tech-list">
+                        <li>Leaflet.js – بديل مفتوح المصدر للخرائط</li>
+                        <li>OpenStreetMap – بيانات الخرائط</li>
+                        <li>Mapbox – (خيار احتياطي)</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h3>الإشعارات والمراسلة</h3>
+                    <ul class="tech-list">
+                        <li>Laravel Notifications – للإشعارات الداخلية</li>
+                        <li>Laravel Mail – للرسائل البريدية</li>
+                        <li>Pusher (اختياري) – للإشعارات الفورية</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h3>الأمان</h3>
+                    <ul class="tech-list">
+                        <li>Laravel Fortify – للمصادقة</li>
+                        <li>Laravel MultiGuard – لدعم عدة أدوار</li>
+                        <li>2FA (Two-Factor Authentication)</li>
+                        <li>Laravel Sanctum – للـ API</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h3>إدارة المشروع</h3>
+                    <ul class="tech-list">
+                        <li>Git & GitHub – للتحكم بالإصدارات</li>
+                        <li>Laravel Forge – للنشر</li>
+                        <li>Figma – لتصميم الواجهات</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Defense Section -->
+    <section id="defense">
+        <div class="container">
+            <div class="section-title">
+                <h2>نقاط الدفاع عن المشروع</h2>
+            </div>
+            <div class="defense-points fade-in">
+                <div class="defense-point">
+                    <h3>نظام متكامل وليس مجرد موقع ويب</h3>
+                    <p>"MyJourney" ليس مجرد موقع ويب، بل نظام متكامل يدير رحلة المستخدم من الاستكشاف إلى الحجز والتقييم، مما يجعله حلًا شاملاً للسياحة الإلكترونية في سوريا.</p>
+                </div>
+                <div class="defense-point">
+                    <h3>معالجة مشاكل حقيقية في السوق</h3>
+                    <p>النظام يعالج مشاكل حقيقية مثل: ضعف التوثيق، عدم وجود منصة موحدة، صعوبة الحجز الآمن، مما يجعله ضروريًا لتنظيم القطاع السياحي.</p>
+                </div>
+                <div class="defense-point">
+                    <h3>مقارنة واضحة توضح القيمة المضافة</h3>
+                    <p>المقارنة الواضحة بين الإصدار السابق والجديد تظهر بوضوح القيمة المضافة والتطوير الاستراتيجي الذي يمثله المشروع.</p>
+                </div>
+                <div class="defense-point">
+                    <h3>استخدام أحدث تقنيات الأمان</h3>
+                    <p>استخدام أحدث تقنيات الأمان والتوثيق يجعله مناسبًا لبيئة سياحية تحتاج إلى مصداقية عالية، مما يضمن تجربة آمنة للمستخدمين.</p>
+                </div>
+                <div class="defense-point">
+                    <h3>بدائل تقنية متينة ومفتوحة المصدر</h3>
+                    <p>استخدام Leaflet.js و OpenStreetMap بدلاً من Google Maps يوفر حلًا مفتوح المصدر وأكثر مرونة مع تجنب القيود والتكاليف المرتبطة بـ Google Maps API.</p>
+                </div>
+                <div class="defense-point">
+                    <h3>إطار عمل متكامل بدون خدمات خارجية</h3>
+                    <p>الاعتماد على Laravel ecosystem بالكامل (Blade, Livewire, Notifications) يقلل من التعقيد ويوفر حلاً متكاملاً وسهل الصيانة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="conclusion">
+                    <p>"MyJourney" يمثل نقلة نوعية في مجال السياحة الإلكترونية في سوريا، حيث يجمع بين الاستكشاف، الحجز الآمن، التواصل المجتمعي عبر التقييمات والمقالات، والإدارة الذكية عبر أدوار متعددة.</p>
+                    <p>وهو ليس مجرد تحديث لفكرة قديمة، بل تطوير استراتيجي يواكب احتياجات السوق السياحي ويثري التجربة السياحية محليًا وعالميًا.</p>
+                </div>
+                <p>مشروع تخرج - MyJourney - منصة سياحية متكاملة</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTop">↑</div>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Scroll to top functionality
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for fade elements
+        fadeElements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        });
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        // Initial check
+        fadeInOnScroll();
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
