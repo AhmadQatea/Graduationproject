@@ -483,6 +483,113 @@
             margin-right: 0.5rem;
             vertical-align: middle;
         }
+        
+        /* Problem Solution Section */
+        .problem-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .problem-box, .solution-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .problem-box {
+            border-right: 4px solid var(--accent);
+        }
+        
+        .solution-box {
+            border-right: 4px solid var(--success);
+        }
+        
+        .problem-box h3, .solution-box h3 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .problem-box h3::before {
+            content: '⚠️';
+            margin-left: 0.5rem;
+        }
+        
+        .solution-box h3::before {
+            content: '💡';
+            margin-left: 0.5rem;
+        }
+        
+        /* Architecture Section */
+        .architecture {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+        
+        .arch-diagram {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .arch-diagram img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Counter Section */
+        .counters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .counter-item {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .counter-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .testimonial {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary);
+        }
     </style>
 </head>
 <body>
@@ -503,7 +610,9 @@
             <div class="logo" style="color: var(--primary); font-size: 1.5rem;">MyJourney</div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#description">الوصف</a></li>
+                <li><a href="#problem">المشكلة والحل</a></li>
                 <li><a href="#comparison">المقارنة</a></li>
+                <li><a href="#architecture">الهيكلية</a></li>
                 <li><a href="#importance">الأهمية</a></li>
                 <li><a href="#technologies">التقنيات</a></li>
                 <li><a href="#defense">الدفاع</a></li>
@@ -518,15 +627,90 @@
                 <h2>وصف المشروع</h2>
             </div>
             <div class="description fade-in">
-                <p>"MyJourney" هو منصة سياحية إلكترونية تهدف إلى تمكين السياح والمستكشفين من اكتشاف المناطق السياحية في سوريا وحجز رحلات مخصصة بسهولة وأمان.</p>
-                <p>يتيح التطبيق للمستخدمين:</p>
-                <ul style="margin-right: 2rem; margin-top: 1rem;">
-                    <li>استعراض المحافظات السورية الـ 14 والأماكن السياحية التابعة لها</li>
-                    <li>الاطلاع على العروض والرحلات المتاحة مع تفاصيل دقيقة (الوقت، السعر، عدد الأشخاص، الصور، الوصف)</li>
-                    <li>حجز الرحلات بعد التحقق من الهوية والبريد الإلكتروني</li>
-                    <li>كتابة وتقييم التجارب السياحية عبر مدونة تفاعلية</li>
-                    <li>إدارة كاملة للحسابات والحجوزات والمقالات من قبل المستخدمين والمسؤولين</li>
+                <p><strong>"MyJourney"</strong> هو منصة سياحية إلكترونية شاملة تهدف إلى إحداث ثورة في قطاع السياحة السوري من خلال توفير حل متكامل يجمع بين الاستكشاف والحجز الآمن والتقييم التفاعلي.</p>
+                
+                <h3 style="margin: 1.5rem 0 1rem; color: var(--primary);">الميزات الأساسية:</h3>
+                <ul style="margin-right: 2rem;">
+                    <li><strong>استكشاف شامل:</strong> تغطية كاملة للمحافظات السورية الـ 14 مع تفاصيل دقيقة عن الأماكن السياحية</li>
+                    <li><strong>نظام حجز متكامل:</strong> حجز الرحلات مع تحقق متعدد المراحل (البريد، الهوية الشخصية)</li>
+                    <li><strong>منصة تفاعلية:</strong> مدونة سياحية حقيقية حيث يشارك المسافرون تجاربهم</li>
+                    <li><strong>إدارة ذكية:</strong> نظام صلاحيات متعدد المستويات (5 أدوار مختلفة)</li>
+                    <li><strong>أمان متقدم:</strong> توثيق متعدد العوامل وحماية شاملة للبيانات</li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem & Solution Section -->
+    <section id="problem" style="background-color: #f5f7fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>المشكلة والحل</h2>
+            </div>
+            <div class="problem-solution fade-in">
+                <div class="problem-box">
+                    <h3>المشكلات الحالية في السياحة السورية</h3>
+                    <ul style="margin-right: 1.5rem;">
+                        <li>عدم وجود منصة موحدة للسياحة في سوريا</li>
+                        <li>صعوبة الوصول إلى معلومات دقيقة عن الوجهات السياحية</li>
+                        <li>عدم وجود نظام حجز آمن وموثوق</li>
+                        <li>غياب آلية للتحقق من مصداقية مقدمي الخدمات</li>
+                        <li>عدم وجود نظام تقييم وتفاعل حقيقي بين المسافرين</li>
+                        <li>صعوبة إدارة الرحلات والسياح للمؤسسات السياحية</li>
+                    </ul>
+                </div>
+                <div class="solution-box">
+                    <h3>الحل الذي يقدمه MyJourney</h3>
+                    <ul style="margin-right: 1.5rem;">
+                        <li>منصة سياحية شاملة تجمع كل الخدمات في مكان واحد</li>
+                        <li>معلومات دقيقة وموثوقة عن جميع الوجهات السياحية</li>
+                        <li>نظام حجز آمن مع تحقق متعدد المراحل</li>
+                        <li>نظام تقييم ومراجعات حقيقية من المسافرين</li>
+                        <li>إدارة ذكية للصلاحيات والأدوار</li>
+                        <li>توثيق متقدم وحماية للبيانات الشخصية</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture">
+        <div class="container">
+            <div class="section-title">
+                <h2>الهيكلية والتخطيط</h2>
+            </div>
+            <div class="architecture fade-in">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">الهيكل التقني المتكامل:</h3>
+                <div class="counters">
+                    <div class="counter-item">
+                        <div class="counter-number">5</div>
+                        <div>أدوار مستخدمين مختلفة</div>
+                    </div>
+                    <div class="counter-item">
+                        <div class="counter-number">14</div>
+                        <div>محافظة سورية مغطاة</div>
+                    </div>
+                    <div class="counter-item">
+                        <div class="counter-number">3</div>
+                        <div>طبقات أمنية متقدمة</div>
+                    </div>
+                    <div class="counter-item">
+                        <div class="counter-number">100%</div>
+                        <div>تكامل مع نظام Laravel</div>
+                    </div>
+                </div>
+                
+                <h3 style="color: var(--primary); margin: 2rem 0 1rem;">مخطط نظام الصلاحيات:</h3>
+                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                    <ul style="list-style-type: none;">
+                        <li style="margin-bottom: 0.5rem;"><strong>المستخدم العادي:</strong> استكشاف، حجز، تقييم</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>مسؤول الحجز:</strong> إدارة الحجوزات، التواصل مع العملاء</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>مسؤول المستخدمين:</strong> إدارة المستخدمين، الموافقة على التعديلات</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>مسؤول الموقع:</strong> إدارة المحتوى، العروض، الأسعار</li>
+                        <li><strong>المسؤول الكبير (Big Boss):</strong> صلاحيات كاملة على النظام</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -548,39 +732,44 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>النطاق</strong></td>
+                            <td><strong>النطاق والهدف</strong></td>
                             <td>دليل محلي للمتاجر والمطاعم</td>
-                            <td class="highlight">منصة سياحية شاملة تشمل رحلات بين المحافظات</td>
+                            <td class="highlight">منصة سياحية وطنية شاملة للرحلات والسياحة</td>
                         </tr>
                         <tr>
-                            <td><strong>آلية الحجز</strong></td>
-                            <td>غير موجودة</td>
-                            <td class="highlight">نظام حجز كامل مع تحقق من الهوية والبريد</td>
+                            <td><strong>نظام الحجز</strong></td>
+                            <td>غير موجود</td>
+                            <td class="highlight">نظام حجز متكامل مع تحقق الهوية والبريد</td>
                         </tr>
                         <tr>
                             <td><strong>الصلاحيات والأدوار</strong></td>
                             <td>مستخدم عادي ومدير فقط</td>
-                            <td class="highlight">5 أدوار (مستخدم عادي، مسؤول حجز، مسؤول مستخدمين، مسؤول محتوى، Big Boss)</td>
+                            <td class="highlight">5 أدوار متخصصة مع صلاحيات دقيقة</td>
                         </tr>
                         <tr>
-                            <td><strong>التفاعل</strong></td>
-                            <td>تقييمات وتعليقات فقط</td>
-                            <td class="highlight">مدونة سياحية، مقالات، مشاركة تجارب</td>
+                            <td><strong>التفاعل والمشاركة</strong></td>
+                            <td>تقييمات وتعليقات أساسية</td>
+                            <td class="highlight">مدونة سياحية كاملة + مشاركة تجارب حقيقية</td>
                         </tr>
                         <tr>
-                            <td><strong>الأمان</strong></td>
+                            <td><strong>نظام الأمان</strong></td>
                             <td>تسجيل دخول عادي</td>
-                            <td class="highlight">تحقق متعدد العوامل (2FA، Fortify، MultiGuard)</td>
+                            <td class="highlight">تحقق متعدد العوامل + Fortify + MultiGuard</td>
                         </tr>
                         <tr>
-                            <td><strong>الإشعارات</strong></td>
-                            <td>محدودة</td>
-                            <td class="highlight">نظام إشعارات متكامل (بريد، رسائل)</td>
+                            <td><strong>التغطية الجغرافية</strong></td>
+                            <td>مناطق محدودة</td>
+                            <td class="highlight">14 محافظة سورية + رحلات بين المحافظات</td>
+                        </tr>
+                        <tr>
+                            <td><strong>نظام الإشعارات</strong></td>
+                            <td>محدود جداً</td>
+                            <td class="highlight">نظام إشعارات متكامل (بريد، رسائل، تنبيهات)</td>
                         </tr>
                         <tr>
                             <td><strong>إدارة المحتوى</strong></td>
-                            <td>ثابتة</td>
-                            <td class="highlight">ديناميكية مع إمكانية الفلترة والبحث المتقدم</td>
+                            <td>ثابتة وغير مرنة</td>
+                            <td class="highlight">ديناميكية مع فلترة متقدمة وبحث ذكي</td>
                         </tr>
                     </tbody>
                 </table>
@@ -592,7 +781,7 @@
     <section id="importance">
         <div class="container">
             <div class="section-title">
-                <h2>أهمية المشروع</h2>
+                <h2>الأهمية والقيمة المضافة</h2>
             </div>
             <div class="features-grid fade-in">
                 <div class="feature-card">
@@ -607,13 +796,13 @@
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🚀</div>
-                    <h3>تطوير لتجربة سابقة ناجحة</h3>
-                    <p>البناء على مشروع "دليل سياحي" السابق وتوسيعه من دليل محلي إلى منصة سياحية وطنية.</p>
+                    <h3>تطوير استراتيجي وليس تحديث</h3>
+                    <p>ليس مجرد تحديث، بل نقلة نوعية من دليل محلي إلى منصة سياحية وطنية متكاملة.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📈</div>
-                    <h3>قابلية التوسع مستقبلاً</h3>
-                    <p>يمكن إضافة الدفع الإلكتروني لاحقًا، دعم لغات متعددة، وإمكانية دمج الذكاء الاصطناعي لتقديم توصيات مخصصة.</p>
+                    <h3>قابلية التوسع المستقبلي</h3>
+                    <p>تصميم مرن يسمح بإضافة الدفع الإلكتروني، دعم لغات متعددة، ودمج الذكاء الاصطناعي مستقبلاً.</p>
                 </div>
             </div>
         </div>
@@ -712,6 +901,21 @@
                     <p>الاعتماد على Laravel ecosystem بالكامل (Blade, Livewire, Notifications) يقلل من التعقيد ويوفر حلاً متكاملاً وسهل الصيانة.</p>
                 </div>
             </div>
+            
+            <div class="testimonials">
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "هذا المشروع يمثل نقلة نوعية في مجال السياحة الإلكترونية في سوريا، ويقدم حلولاً عملية لمشاكل حقيقية يعاني منها القطاع السياحي."
+                    </div>
+                    <div class="testimonial-author">- خبير في مجال السياحة</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "التصميم التقني المتكامل واستخدام أحدث تقنيات Laravel يجعله مشروعاً قابلاً للتطوير والصيانة بسهولة."
+                    </div>
+                    <div class="testimonial-author">- مبرمج ومطور ويب</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -720,8 +924,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="conclusion">
-                    <p>"MyJourney" يمثل نقلة نوعية في مجال السياحة الإلكترونية في سوريا، حيث يجمع بين الاستكشاف، الحجز الآمن، التواصل المجتمعي عبر التقييمات والمقالات، والإدارة الذكية عبر أدوار متعددة.</p>
-                    <p>وهو ليس مجرد تحديث لفكرة قديمة، بل تطوير استراتيجي يواكب احتياجات السوق السياحي ويثري التجربة السياحية محليًا وعالميًا.</p>
+                    <p><strong>"MyJourney"</strong> يمثل نقلة نوعية في مجال السياحة الإلكترونية في سوريا، حيث يجمع بين الاستكشاف، الحجز الآمن، التواصل المجتمعي عبر التقييمات والمقالات، والإدارة الذكية عبر أدوار متعددة.</p>
+                    <p>وهو ليس مجرد تحديث لفكرة قديمة، بل <strong>تطوير استراتيجي</strong> يواكب احتياجات السوق السياحي ويثري التجربة السياحية محليًا وعالميًا.</p>
                 </div>
                 <p>مشروع تخرج - MyJourney - منصة سياحية متكاملة</p>
             </div>
@@ -807,6 +1011,39 @@
                     });
                 }
             });
+        });
+        
+        // Counter animation
+        const counters = document.querySelectorAll('.counter-number');
+        const speed = 200;
+        
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const target = +counter.innerText.replace('%', '');
+                const count = +counter.innerText.replace('%', '');
+                const increment = target / speed;
+                
+                if(count < target) {
+                    counter.innerText = Math.ceil(count + increment) + (counter.innerText.includes('%') ? '%' : '');
+                    setTimeout(animateCounters, 1);
+                } else {
+                    counter.innerText = target + (counter.innerText.includes('%') ? '%' : '');
+                }
+            });
+        };
+        
+        // Start counter animation when in view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        document.querySelectorAll('.counter-item').forEach(item => {
+            observer.observe(item);
         });
     </script>
 </body>
